@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+bool isPerfect(int num) {
+    if (num <= 0) return false;
+
+    int sum = 0;
+    for (int i = 1; i <= num / 2; i++) {
+        if (num % i == 0)
+            sum += i;
+    }
+    return sum == num;
+}
+
+int main() {
+    int arr[10];
+    int totalSum = 0;
+    int perfectCount = 0;
+
+    cout << "Enter 10 numbers:" << endl;
+    for (int i = 0; i < 10; i++) {
+        cout << "Number " << i + 1 << ": ";
+        cin >> arr[i];
+        totalSum += arr[i];
+
+        if (isPerfect(arr[i]))
+            perfectCount++;
+    }
+
+    cout << "\nSum of all numbers: " << totalSum << endl;
+    cout << "Count of perfect numbers: " << perfectCount << endl;
+
+    return 0;
+}
