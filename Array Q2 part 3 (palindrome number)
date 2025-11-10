@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+bool isPalindrome(int num) {
+    int original = num;
+    int reversed = 0;
+    
+    // Handle negative numbers
+    if (num < 0) return false;
+    
+    // Reverse the number
+    while (num > 0) {
+        int digit = num % 10;
+        reversed = reversed * 10 + digit;
+        num /= 10;
+    }
+    
+    // Check if original equals reversed
+    return original == reversed;
+}
+
+int main() {
+    int arr[10];
+    int totalSum = 0;
+    int palindromeCount = 0;
+    
+    cout << "Enter 10 numbers:" << endl;
+    for (int i = 0; i < 10; i++) {
+        cout << "Number " << i + 1 << ": ";
+        cin >> arr[i];
+        totalSum += arr[i];
+        
+        if (isPalindrome(arr[i]))
+            palindromeCount++;
+    }
+    
+    cout << "\nSum of all numbers: " << totalSum << endl;
+    cout << "Count of palindrome numbers: " << palindromeCount << endl;
+    
+    return 0;
+}
